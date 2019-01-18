@@ -2,6 +2,7 @@ import pygame
 import os
 import math
 import sys
+import random
 sys.path.insert(0,"C:\\Users\\CBriggs\\Desktop\\pygame")
 from colors import *
 from boxes import *
@@ -18,9 +19,9 @@ pygame.display.set_caption("Shapes")
 clock = pygame.time.Clock()
 
 running = True
-x_img = pygame.image.load('x.png')
+x_img = pygame.image.load('Wood_X.png')
 
-o_img = pygame.image.load('o.png')
+o_img = pygame.image.load('Wood_O.png')
 #white = (255,255,255)
 
 x = int((display_width - 450) * 0.5)
@@ -30,8 +31,8 @@ board = [0,0,0,0,0,0,0,0,0,0]
 
 pygame.font.init()
 myfont = pygame.font.SysFont('Gorgia', 36)
-textsurface = myfont.render("X's Win", False,(0,0,0))
-textsurface2 = myfont.render("O's Win", False,(0,0,0))
+textsurface = myfont.render("X's Win Press F2 to Start a New Game", False,(0,0,0))
+textsurface2 = myfont.render("O's Win F2 to Start a New Game", False,(0,0,0))
 
 def checkWin():
     if board[1] % 2 != 0 and board[2]  % 2 != 0 and board[3] % 2 != 0:
@@ -91,7 +92,9 @@ def checkWin():
 #board[7] = pygame.draw.rect(gameDisplay, (colors['blueviolet']), pygame.Rect(x, y + 300, 150, 150),3)
 #board[8] = pygame.draw.rect(gameDisplay, (colors['darkslategray']), pygame.Rect(x + 150, y + 300, 150, 150),3)
 #board[9] = pygame.draw.rect(gameDisplay, (colors['aqua']), pygame.Rect(x + 300, y + 300, 150, 150),3)
+
 turn = 0
+
 while running:
 
     keys = pygame.key.get_pressed()
@@ -211,7 +214,10 @@ while running:
         elif board[9] == 0 and  pos_x > box9 and pos_x < box9b and pos_y > box9c and pos_y < box9d and turn % 2 == 0:
             board[9] = turn
             turn +=1
-
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_F2:
+            board = [0,0,0,0,0,0,0,0,0,0]
+            turn = 1
 
     print("turn is " + str(turn))
     print("board 1 is " + str(board[1]))
@@ -224,7 +230,83 @@ while running:
     print("board 8 is " + str(board[8]))
     print("board 9 is " + str(board[9]))
 
-
+    if turn != 0 and turn % 2 == 0 and board[1] % 2 != 0 and board[2] % 2 != 0 and board[3] == 0:
+        board[3] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[4] % 2 != 0 and board[5] % 2 != 0 and board[6] == 0:
+        board[6] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[7] % 2 != 0 and board[8] % 2 != 0 and board[9] == 0:
+        board[9] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[1] % 2 != 0 and board[3] % 2 != 0 and board[2] == 0:
+        board[2] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[4] % 2 != 0 and board[6] % 2 != 0 and board[5] == 0:
+        board[5] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[7] % 2 != 0 and board[9] % 2 != 0 and board[8] == 0:
+        board[8] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[2] % 2 != 0 and board[3] % 2 != 0 and board[1] == 0:
+        board[1] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[5] % 2 != 0 and board[6] % 2 != 0 and board[4] == 0:
+        board[4] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[8] % 2 != 0 and board[9] % 2 != 0 and board[7] == 0:
+        board[7] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[1] % 2 != 0 and board[4] % 2 != 0 and board[7] == 0:
+        board[7] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[2] % 2 != 0 and board[5] % 2 != 0 and board[8] == 0:
+        board[6] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[3] % 2 != 0 and board[6] % 2 != 0 and board[9] == 0:
+        board[9] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[4] % 2 != 0 and board[7] % 2 != 0 and board[1] == 0:
+        board[1] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[5] % 2 != 0 and board[8] % 2 != 0 and board[2] == 0:
+        board[2] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[6] % 2 != 0 and board[9] % 2 != 0 and board[3] == 0:
+        board[3] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[1] % 2 != 0 and board[7] % 2 != 0 and board[4] == 0:
+        board[4] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[2] % 2 != 0 and board[8] % 2 != 0 and board[5] == 0:
+        board[5] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[3] % 2 != 0 and board[9] % 2 != 0 and board[6] == 0:
+        board[6] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[1] % 2 != 0 and board[5] % 2 != 0 and board[9] == 0:
+        board[9] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[1] % 2 != 0 and board[9] % 2 != 0 and board[5] == 0:
+        board[5] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[5] % 2 != 0 and board[9] % 2 != 0 and board[1] == 0:
+        board[1] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[3] % 2 != 0 and board[5] % 2 != 0 and board[7] == 0:
+        board[7] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[3] % 2 != 0 and board[7] % 2 != 0 and board[5] == 0:
+        board[5] = turn
+        turn +=1
+    elif turn != 0 and turn % 2 == 0 and board[5] % 2 != 0 and board[7] % 2 != 0 and board[3] == 0:
+        board[3] = turn
+        turn +=1
+    else:
+        i = random.randint(1,9)
+        if board[i] == 0:
+            board[i] = turn
+            turn += 1
 
 
     checkWin()
