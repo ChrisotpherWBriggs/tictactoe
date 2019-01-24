@@ -3,12 +3,13 @@ import os
 import math
 import sys
 import random
-sys.path.insert(0,"C:\\Users\\CBriggs\\Desktop\\pygame")
+scripdir = os.getcwd()
+sys.path.insert(0,scripdir)
 from colors import *
 from boxes import *
 
 pygame.init()
-os.chdir("C:\\Users\\CBriggs\\Desktop\\pygame")
+os.chdir(scripdir)
 display_width = 800
 display_height = 600
 
@@ -304,7 +305,7 @@ while running:
         turn +=1
     else:
         i = random.randint(1,9)
-        if board[i] == 0:
+        if turn % 2 == 0 and board[i] == 0:
             board[i] = turn
             turn += 1
 
